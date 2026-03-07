@@ -1,0 +1,298 @@
+/* Srotar Ashor - Common Styles */
+
+:root {
+    --primary: #f7941c;
+    --primary-dark: #e67e22;
+    --secondary: #ffd700;
+    --accent: #ff8c00;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #2d2d2d);
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    cursor: auto;
+}
+
+/* Only hide the system cursor when custom cursor is enabled */
+body.has-custom-cursor {
+    cursor: none;
+}
+
+.bengali-text {
+    font-family: 'Noto Sans Bengali', 'Noto Sans', system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Ensure Bengali text renders well wherever lang=bn is applied */
+:lang(bn) {
+    font-family: 'Noto Sans Bengali', 'Noto Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Avoid text overflow for long Bengali lines on small screens */
+.bengali-text, :lang(bn) {
+    overflow-wrap: anywhere;
+}
+
+/* Navigation Styles */
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(247, 148, 28, 0.4);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #d1d5db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary);
+    transition: all 0.3s ease;
+}
+
+/* Footer Styles */
+footer {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(247, 148, 28, 0.2);
+    margin-top: 4rem;
+}
+
+footer p {
+    color: #9ca3af;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #f7941c;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffd700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-content {
+        padding: 1rem;
+    }
+    
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button Styles */
+.btn-advanced {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.btn-advanced:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(247, 148, 28, 0.4);
+}
+
+/* Social Link Styles */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+.social-link:hover {
+    background: var(--primary);
+    color: #000;
+    transform: scale(1.1);
+}
+
+/* Custom Cursor */
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: rgba(247, 148, 28, 0.9);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 12px rgba(247, 148, 28, 0.5);
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform;
+    transform: translate3d(-100px, -100px, 0);
+    backface-visibility: hidden;
+    mix-blend-mode: normal;
+    opacity: 0;
+}
+
+.cursor::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(247, 148, 28, 0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.cursor.hover::before {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.6;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mt-4 { margin-top: 1rem; }
+.p-4 { padding: 1rem; }
+.rounded { border-radius: 8px; }
+.shadow { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Albums - Srotar Ashor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/albums.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="logo bengali-text">শ্রোতার আসর</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="events.html" class="nav-link">Events</a></li>
+                <li><a href="albums.html" class="nav-link active">Albums</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main style="padding-top: 5rem;">
+        <!-- Header -->
+        <section class="text-center py-16 px-6">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent fade-in">
+                Photo Albums
+            </h1>
+            <p class="bengali-text text-3xl md:text-4xl text-orange-300 mb-6 fade-in">ছবির অ্যালবাম</p>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed fade-in">
+                Journey through our years of cultural celebrations, preserved in memories and photographs. Each year tells a story of music, tradition, and community.
+            </p>
+        </section>
+
+        <!-- Year Navigation -->
+        <section class="year-nav" id="yearNav">
+            <button class="year-btn active" data-year="all">All Years</button>
+        </section>
+
+        <!-- Albums Grid -->
+        <section class="album-grid" id="albumsGrid">
+            <!-- Albums will be dynamically generated -->
+        </section>
+    </main>
+
+    <!-- Photo Gallery Modal -->
+    <div class="photo-gallery-modal" id="photoGalleryModal">
+        <div class="gallery-header">
+            <button class="gallery-close" onclick="closePhotoGallery()">&times;</button>
+            <h2 class="gallery-title" id="galleryTitle">Album Photos</h2>
+            <p class="gallery-subtitle bengali-text" id="gallerySubtitle">ছবির অ্যালবাম</p>
+        </div>
+        <div class="gallery-content">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be dynamically generated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Photo Lightbox -->
+    <div class="photo-lightbox" id="photoLightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Website designed and developed by 
+            <a href="https://nuovix.com/" target="_blank" rel="noopener noreferrer">Nuovix</a>
+        </p>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="js/common.js"></script>
+    <script src="js/albums.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+{
+  "albums": [
+    {
+      "year": 2016,
+      "title": "Cultural Programs 2016",
+      "titleBengali": "সাংস্কৃতিক অনুষ্ঠান ২০১৬",
+      "description": "Memorable events from 2016 including Muhurto Gulo",
+      "photos": [
+        "albums/2016/2016-Mar05-TPTM/tomar pore thekai matha.jpg",
+        "events/20160806-Muhurtogulo.jpg",
+        "events/20160205-TPTM-poster-web.jpg",
+        "events/20160205-TPTM-poster.jpg",
+        "events/20161105 - LGL.jpg"
+      ],
+      "events": ["Muhurto Gulo", "Tomar Pore Thekai Matha"],
+      "highlights": [
+        { "icon": "🎆", "text": "Anniversary celebrations" },
+        { "icon": "🎸", "text": "Live musical performances" },
+        { "icon": "📸", "text": "Professional photography" }
+      ],
+      "facebook": "https://www.facebook.com/media/set/?set=a.1398339113527627.1073741838.206897322671818&type=1&l=3f3100b01a"
+    },
+    {
+      "year": 2015,
+      "title": "Cultural Journey 2015",
+      "titleBengali": "সাংস্কৃতিক যাত্রা ২০১৫",
+      "description": "Beautiful programs including Phire Dekha Dosh Bocchor and Alor Pothojatri",
+      "photos": [
+        "albums/2015/2015-Jun6-APJ/apj (16).jpg",
+        "albums/2015/2015-Jun6-APJ/apj (9).jpg",
+        "albums/2015/2015-Jun6-APJ/apj (20).jpg",
+        "albums/2015/2015-Jun6-APJ/apj (5).jpg",
+        "albums/2015/2015-Jun6-APJ/apj (4).jpg",
+        "events/20150606-apj-poster.jpg",
+        "events/20150214-FLBB-Poster-web.jpg",
+        "events/20150214-FLBB-Poster.jpg"
+      ],
+      "events": ["Phire Dekha Dosh Bocchor", "Alor Pothojatri", "Phagun Legechhe"],
+      "highlights": [
+        { "icon": "🍂", "text": "Autumn festival vibes" },
+        { "icon": "🎭", "text": "Cultural heritage showcase" },
+        { "icon": "🌹", "text": "Spring celebration" }
+      ],
+      "facebook": "https://www.facebook.com/media/set/?set=a.1119407148087493.1073741835.206897322671818&type=3"
+    },
+    {
+      "year": 2014,
+      "title": "Musical Celebrations 2014",
+      "titleBengali": "সাংস্কৃতিক উৎসব ২০১৪",
+      "description": "Memorable musical programs and cultural celebrations",
+      "photos": [
+        "events/rongilare.png",
+        "events/rongilareposter.jpg",
+        "events/tgs.jpg",
+        "events/tomaygaanshonabo.jpg",
+        "events/ItiSA.jpg"
+      ],
+      "events": ["Rongilare", "Tomay Gaan Shonabo", "Iti Shilpokalak"],
+      "highlights": [
+        { "icon": "🎵", "text": "Musical diversity" },
+        { "icon": "🎯", "text": "Artistic excellence" },
+        { "icon": "🎆", "text": "Community celebrations" }
+      ],
+      "facebook": "https://www.facebook.com/media/set/?set=a.916632751698268.1073741832.206897322671818&type=3"
+    },
+    {
+      "year": 2013,
+      "title": "Harmonious Year 2013",
+      "titleBengali": "সুরময় বছর ২০১৩",
+      "description": "Beautiful programs including Jugol Bondee Gaane Gaane",
+      "photos": [
+        "albums/2013/2013-Jun22-JBGG/jbgg (24).jpg",
+        "albums/2013/2013-Jun22-JBGG/jbgg (4).jpg",
+        "albums/2013/2013-Jun22-JBGG/jbgg (12).jpg",
+        "albums/2013/2013-Jun22-JBGG/jbgg (28).jpg",
+        "albums/2013/2013-Jun22-JBGG/jbgg (8).jpg",
+        "events/jugolbondee.jpg",
+        "events/jugolbondeeposter.jpg"
+      ],
+      "events": ["Jugol Bondee Gaane Gaane", "Beje Uthuk Ponchomi Shur"],
+      "highlights": [
+        { "icon": "🎶", "text": "Harmonious collaborations" },
+        { "icon": "📜", "text": "Poetry and music fusion" },
+        { "icon": "🎯", "text": "Artistic achievements" }
+      ],
+      "facebook": "https://www.facebook.com/media/set/?set=a.634372189924327.1073741827.206897322671818&type=1&l=4f84c00f6c"
+    },
+    {
+      "year": 2012,
+      "title": "Golden Memories 2012",
+      "titleBengali": "স্বর্ণিম স্মৃতি ২০১২",
+      "description": "Celebrating four decades with Gane Gane Char Doshok",
+      "photos": [
+        "events/ggcd.jpg",
+        "events/ggcdposter.jpg",
+        "events/bdpkf.jpg",
+        "events/bdpkfposter.jpg",
+        "events/bauliana.jpg"
+      ],
+      "events": ["Gane Gane Char Doshok", "Badol Diner Prothom Kodom Phool", "Bauliana"],
+      "highlights": [
+        { "icon": "🏆", "text": "Four decades celebration" },
+        { "icon": "🌧️", "text": "Monsoon melodies" },
+        { "icon": "🎪", "text": "Folk traditions" }
+      ],
+      "facebook": "https://www.facebook.com/media/set/?set=a.509779869050227.132307.206897322671818&type=1&l=c3233f8b5a"
+    },
+    {
+      "year": 2011,
+      "title": "Beginning Journey 2011",
+      "titleBengali": "শুরুর যাত্রা ২০১১",
+      "description": "Fifth year anniversary with Koler Gaan and other classics",
+      "photos": [
+        "events/kolergaan.jpg",
+        "events/kolergaanposter.jpg",
+        "events/fifthyear.jpg",
+        "events/aohs.jpg"
+      ],
+      "events": ["Koler Gaan", "Fifth Year Anniversary", "Amra Ora Hoyechi Shobar"],
+      "highlights": [
+        { "icon": "🎊", "text": "Fifth anniversary" },
+        { "icon": "🌅", "text": "New beginnings" },
+        { "icon": "🎆", "text": "Community building" }
+      ],
+      "facebook": "https://www.facebook.com/media/set/?set=a.313256088702607.89413.206897322671818&type=1&l=167a6fe574"
+    }
+  ]
+}
+

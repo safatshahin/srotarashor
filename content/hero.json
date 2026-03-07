@@ -1,0 +1,8 @@
+{
+  "slides": [
+    { "src": "images/photo1.jpg", "alt": "Performance 1" },
+    { "src": "images/photo2.jpg", "alt": "Performance 2" },
+    { "src": "images/photo1.jpg", "alt": "Performance 3" },
+    { "src": "images/photo2.jpg", "alt": "Performance 4" }
+  ]
+}
