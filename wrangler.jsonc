@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "srotarashor",
+  "compatibility_date": "2026-03-26",
+  "assets": {
+    "directory": "dist"
+  },
+  "build": {
+    "command": "bash scripts/build-dist.sh"
+  }
+}

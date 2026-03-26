@@ -18,3 +18,7 @@ yarn-error.log
 
 # OS
 Thumbs.db
+
+# Cloudflare Worker build artifacts
+dist/
+.wrangler/
