@@ -57,7 +57,7 @@ let eventsData = [
         title: "Rongilare",
         bengali: "রঙিলারে",
         date: "2014-06-21",
-        image: "events/rongilare.png",
+        image: "events/rongilare.jpg",
         facebook: "https://www.facebook.com/media/set/?set=a.916632751698268.1073741832.206897322671818&type=3",
         youtube: "",
         desc: "A colorful evening filled with joyful Bengali folk songs and dance performances"
@@ -145,6 +145,77 @@ let eventsData = [
 ];
 
 let currentFilter = 'all';
+
+function normalizeUpcomingEvents(data) {
+    if (!data) return [];
+    if (Array.isArray(data)) return data;
+    if (Array.isArray(data.events)) return data.events;
+    if (data.enabled === undefined || data.enabled === true) return [data];
+    return [];
+}
+
+function escapeHtml(text) {
+    return String(text || '').replace(/[&<>"']/g, function(ch) {
+        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+        return map[ch];
+    });
+}
+
+async function renderFeaturedUpcomingEvent() {
+    const section = document.getElementById('featuredUpcoming');
+    const container = document.getElementById('featuredUpcomingContainer');
+    if (!section || !container) return;
+
+    let events = [];
+    try {
+        const res = await fetch('content/upcoming.json', { cache: 'no-store' });
+        if (res.ok) {
+            const json = await res.json();
+            events = normalizeUpcomingEvents(json);
+        }
+    } catch (e) {
+        console.warn('⚠️ Could not load featured upcoming event from content/upcoming.json', e);
+    }
+
+    const featured = events.find(evt => evt && (evt.enabled === undefined || evt.enabled === true));
+    if (!featured) {
+        section.hidden = true;
+        return;
+    }
+
+    const start = featured.start ? new Date(featured.start) : null;
+    const end = featured.end ? new Date(featured.end) : null;
+    const dateFmt = new Intl.DateTimeFormat(undefined, { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+    const timeFmt = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit' });
+
+    const dateText = start && !Number.isNaN(start.getTime()) ? dateFmt.format(start) : 'Date TBA';
+    const timeText = start && !Number.isNaN(start.getTime())
+        ? (end && !Number.isNaN(end.getTime()) ? `${timeFmt.format(start)} – ${timeFmt.format(end)}` : timeFmt.format(start))
+        : 'Time TBA';
+    const locationText = featured.location || 'Location TBA';
+    const mapsUrl = featured.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationText)}`;
+
+    container.innerHTML = `
+        <article class="featured-upcoming-card fade-in">
+            <div class="featured-upcoming-media">
+                <img src="${escapeHtml(featured.image)}" alt="${escapeHtml(featured.title || 'Upcoming event')}" onerror="handleImageError(this)">
+                <span class="featured-upcoming-badge">Upcoming</span>
+            </div>
+            <div class="featured-upcoming-content">
+                <p class="featured-upcoming-kicker">Next Program</p>
+                <h2 class="featured-upcoming-title">${escapeHtml(featured.title || 'Upcoming Event')}</h2>
+                ${featured.bengali ? `<p class="featured-upcoming-title-bengali bengali-text">${escapeHtml(featured.bengali)}</p>` : ''}
+                ${featured.description ? `<p class="featured-upcoming-description">${escapeHtml(featured.description)}</p>` : ''}
+                <div class="featured-upcoming-meta">
+                    <p><strong>Date</strong> ${escapeHtml(dateText)}</p>
+                    <p><strong>Time</strong> ${escapeHtml(timeText)}</p>
+                    <p><strong>Location</strong> <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(locationText)}</a></p>
+                </div>
+            </div>
+        </article>
+    `;
+    section.hidden = false;
+}
 
 // Try to load dynamic events from JSON manifest
 async function loadEventsFromManifest() {
@@ -294,6 +365,7 @@ function filterEvents(year, clickEvent) {
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('📅 Events page loaded');
 
+    await renderFeaturedUpcomingEvent();
     await loadEventsFromManifest();
 
     setupFilters();
@@ -314,6 +386,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }, observerOptions);
 
     // Observe elements that should animate on scroll
-    const animateElements = document.querySelectorAll('.event-card, .stat-card');
+    const animateElements = document.querySelectorAll('.event-card, .featured-upcoming-card');
     animateElements.forEach(el => observer.observe(el));
 });

@@ -48,7 +48,7 @@ let albumsData = {
         titleBengali: "সাংস্কৃতিক উৎসব ২০১৪",
         description: "Memorable musical programs and cultural celebrations",
         photos: [
-            'events/rongilare.png',
+            'events/rongilare.jpg',
             'events/rongilareposter.jpg',
             'events/tgs.jpg',
             'events/tomaygaanshonabo.jpg',

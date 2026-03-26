@@ -24,10 +24,10 @@ const slides = [
 // Flexible hero images: JSON-driven with graceful fallback
 // If JSON is missing/invalid or all images fail to load, fall back to these known-good images.
 const HERO_FALLBACK = [
-    { src: 'images/photo1.jpg', alt: 'Hero 1' },
-    { src: 'images/photo2.jpg', alt: 'Hero 2' },
-    { src: 'images/photo3.jpg', alt: 'Hero 3' },
-    { src: 'images/Photo4.jpg', alt: 'Hero 4' } // filename is capitalized in repo
+    { src: 'assets/slides/photo1.jpg', alt: 'Hero 1' },
+    { src: 'assets/slides/photo2.jpg', alt: 'Hero 2' },
+    { src: 'assets/slides/photo3.jpg', alt: 'Hero 3' },
+    { src: 'assets/slides/Photo4.jpg', alt: 'Hero 4' } // filename is capitalized in repo
 ];
 
 function preload(src) {
@@ -88,11 +88,35 @@ function buildHeroSlides(list) {
         const div = document.createElement('div');
         div.className = 'carousel-slide' + (idx === 0 ? ' active' : '');
         const src = item && item.src ? item.src : '';
+        const position = (item && typeof item.position === 'string' && item.position.trim())
+            ? item.position.trim()
+            : '50% 50%';
+        const positionMobile = (item && typeof item.positionMobile === 'string' && item.positionMobile.trim())
+            ? item.positionMobile.trim()
+            : position;
         // keep gradient overlay similar to CSS
         div.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('${src}')`;
+        // Use `contain` for the photo layer so the full image is visible (no crop).
+        div.style.backgroundSize = 'cover, contain';
+        div.style.backgroundRepeat = 'no-repeat, no-repeat';
+        div.style.backgroundColor = '#0a0a0a';
+        div.dataset.posDesktop = position;
+        div.dataset.posMobile = positionMobile;
         div.setAttribute('role', 'img');
         if (item && item.alt) div.setAttribute('aria-label', item.alt);
         container.appendChild(div);
+    });
+
+    applyHeroSlidePositions();
+}
+
+function applyHeroSlidePositions() {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const slides = document.querySelectorAll('.image-carousel .carousel-slide');
+    slides.forEach(slide => {
+        const desktopPos = slide.dataset.posDesktop || '50% 50%';
+        const mobilePos = slide.dataset.posMobile || desktopPos;
+        slide.style.backgroundPosition = `center, ${isMobile ? mobilePos : desktopPos}`;
     });
 }
 
@@ -133,140 +157,6 @@ function initCarousel() {
     setInterval(nextSlide, 4000);
 }
 
-// Advanced particle system from original
-class ParticleSystem {
-    constructor() {
-        this.particles = [];
-        this.particleContainer = document.body;
-        // Canvas layer for lightweight connection rendering (faster than DOM lines)
-        this.canvas = document.createElement('canvas');
-        this.canvas.className = 'particle-canvas';
-        Object.assign(this.canvas.style, {
-            position: 'fixed',
-            inset: '0',
-            width: '100%',
-            height: '100%',
-            pointerEvents: 'none',
-            zIndex: '1'
-        });
-        this.ctx = this.canvas.getContext('2d');
-        this.resizeCanvas();
-        window.addEventListener('resize', () => this.resizeCanvas());
-        this.particleContainer.appendChild(this.canvas);
-        this.mouse = { x: 0, y: 0 };
-        this.init();
-    }
-
-    init() {
-        this.setupMouseTracking();
-        this.createParticles();
-        this.startAnimationLoop();
-    }
-
-    setupMouseTracking() {
-        document.addEventListener('mousemove', (e) => {
-            this.mouse.x = e.clientX;
-            this.mouse.y = e.clientY;
-        });
-    }
-
-    createParticles() {
-        const count = Math.max(16, Math.floor(window.innerWidth * window.devicePixelRatio / 160));
-        for (let i = 0; i < Math.min(count, 30); i++) {
-            this.addParticle();
-        }
-    }
-
-    addParticle() {
-        const particle = {
-            element: document.createElement('div'),
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            vx: (Math.random() - 0.5) * 2,
-            vy: (Math.random() - 0.5) * 2,
-            size: Math.random() * 4 + 1,
-            opacity: Math.random() * 0.5 + 0.2,
-            hue: Math.random() * 60 + 15 // Orange hues
-        };
-
-        particle.element.className = 'particle';
-        particle.element.style.width = particle.size + 'px';
-        particle.element.style.height = particle.size + 'px';
-        particle.element.style.background = `hsl(${particle.hue}, 80%, 60%)`;
-        particle.element.style.opacity = particle.opacity;
-        particle.element.style.transform = `translate3d(${particle.x}px, ${particle.y}px, 0)`;
-
-        this.particleContainer.appendChild(particle.element);
-        this.particles.push(particle);
-    }
-
-    updateParticles() {
-        this.particles.forEach(particle => {
-            particle.x += particle.vx;
-            particle.y += particle.vy;
-
-            // Boundary collision
-            if (particle.x < 0 || particle.x > window.innerWidth) particle.vx *= -1;
-            if (particle.y < 0 || particle.y > window.innerHeight) particle.vy *= -1;
-
-            // Mouse interaction
-            const dx = this.mouse.x - particle.x;
-            const dy = this.mouse.y - particle.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < 150) {
-                const force = (150 - distance) / 150;
-                particle.vx -= dx * force * 0.01;
-                particle.vy -= dy * force * 0.01;
-            }
-
-            particle.element.style.transform = `translate3d(${particle.x}px, ${particle.y}px, 0)`;
-        });
-
-        // Draw connections
-        this.drawConnections();
-    }
-
-    drawConnections() {
-        const ctx = this.ctx;
-        if (!ctx) return;
-        const w = this.canvas.width, h = this.canvas.height;
-        ctx.clearRect(0, 0, w, h);
-        ctx.lineWidth = 1;
-        for (let i = 0; i < this.particles.length; i++) {
-            for (let j = i + 1; j < this.particles.length; j++) {
-                const dx = this.particles[i].x - this.particles[j].x;
-                const dy = this.particles[i].y - this.particles[j].y;
-                const dist = Math.hypot(dx, dy);
-                if (dist < 120) {
-                    const alpha = ((120 - dist) / 120) * 0.3;
-                    ctx.strokeStyle = `rgba(247, 148, 28, ${alpha})`;
-                    ctx.beginPath();
-                    ctx.moveTo(this.particles[i].x, this.particles[i].y);
-                    ctx.lineTo(this.particles[j].x, this.particles[j].y);
-                    ctx.stroke();
-                }
-            }
-        }
-    }
-
-    resizeCanvas() {
-        const ratio = Math.min(2, window.devicePixelRatio || 1);
-        this.canvas.width = Math.floor(window.innerWidth * ratio);
-        this.canvas.height = Math.floor(window.innerHeight * ratio);
-        this.canvas.style.width = '100%';
-        this.canvas.style.height = '100%';
-        if (this.ctx) this.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    }
-
-    startAnimationLoop() {
-        const animate = () => {
-            this.updateParticles();
-            requestAnimationFrame(animate);
-        };
-        animate();
-    }
-}
 
 // Scroll animations
 function setupScrollAnimations() {
@@ -330,20 +220,10 @@ function initMusicVisualization() {
 
 // Performance optimization
 function optimizePerformance() {
-    // Reduce particles on mobile
-    if (window.innerWidth < 768) {
-        const particles = document.querySelectorAll('.particle');
-        particles.forEach((particle, index) => {
-            if (index % 2 === 0) {
-                particle.remove();
-            }
-        });
-    }
-    
     // Pause animations when tab is not visible
     document.addEventListener('visibilitychange', () => {
         const isHidden = document.hidden;
-        const animatedElements = document.querySelectorAll('.particle, .floating-orb, .wave-bar');
+        const animatedElements = document.querySelectorAll('.floating-orb, .wave-bar');
         animatedElements.forEach(el => {
             el.style.animationPlayState = isHidden ? 'paused' : 'running';
         });
@@ -391,9 +271,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Render upcoming event (reads content/upcoming.json; hides if none)
     renderUpcomingEvent();
 
-    // Initialize advanced particle system
-    const particleSystem = new ParticleSystem();
-
     // Performance optimizations
     optimizePerformance();
 });
@@ -403,7 +280,7 @@ async function renderUpcomingEvent() {
     const container = document.getElementById('upcomingContainer');
     if (!container) return;
 
-    // Prefer JS override first, then JSON, then fallback hidden
+    // Prefer JSON first, then optional JS override fallback, then hidden
     const normalize = (data) => {
         if (!data) return [];
         if (Array.isArray(data)) return data;
@@ -412,21 +289,22 @@ async function renderUpcomingEvent() {
         return [];
     };
 
-    let events = normalize(window.UPCOMING_EVENTS);
-    if (events.length) {
-        console.log('✅ Loaded upcoming events from JS override:', events.length);
+    let events = [];
+    try {
+        const res = await fetch('content/upcoming.json', { cache: 'no-store' });
+        if (res.ok) {
+            const json = await res.json();
+            events = normalize(json);
+            if (events.length) console.log('✅ Loaded upcoming events from JSON:', events.length);
+        }
+    } catch (e) {
+        console.warn('⚠️ Failed to load upcoming events from JSON:', e);
     }
 
     if (events.length === 0) {
-        try {
-            const res = await fetch('content/upcoming.json', { cache: 'no-store' });
-            if (res.ok) {
-                const json = await res.json();
-                events = normalize(json);
-                if (events.length) console.log('✅ Loaded upcoming events from JSON:', events.length);
-            }
-        } catch (e) {
-            console.warn('⚠️ Failed to load upcoming events from JSON:', e);
+        events = normalize(window.UPCOMING_EVENTS);
+        if (events.length) {
+            console.log('ℹ️ Loaded upcoming events from JS override fallback:', events.length);
         }
     }
 
@@ -497,10 +375,14 @@ async function renderUpcomingEvent() {
 
         return `
       <article class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch upcoming-card">
-        <div class="col-span-1 rounded-xl overflow-hidden shadow-lg border border-orange-600/30 bg-gradient-to-br from-orange-500/10 to-orange-600/5">
-          <img src="${data.image || ''}" alt="${data.title || 'Upcoming Event'}" class="w-full h-64 object-cover" onerror="this.style.display='none'" />
+        <div class="col-span-1 relative rounded-xl overflow-hidden shadow-lg border border-orange-600/30 bg-gradient-to-br from-orange-500/10 to-orange-600/5 min-h-64">
+          <span class="absolute top-3 left-3 z-10 px-3 py-1 rounded-full bg-gradient-to-r from-orange-400 to-yellow-300 text-black text-xs font-extrabold tracking-wider uppercase">
+            Upcoming
+          </span>
+          <img src="${data.image || ''}" alt="${data.title || 'Upcoming Event'}" class="w-full h-full object-cover block" onerror="this.style.display='none'" />
         </div>
         <div class="col-span-2 p-6 rounded-xl shadow-lg border border-orange-600/30 bg-gradient-to-br from-zinc-900 to-zinc-800/60">
+          <p class="text-orange-200 text-xs font-bold uppercase tracking-[0.18em] mb-2">Next Program</p>
           <div class="flex items-center justify-between mb-3 gap-3 flex-wrap">
             <h2 class="text-2xl md:text-3xl font-bold text-white">${data.title || 'Upcoming Event'}</h2>
             ${dateStr ? `
@@ -544,5 +426,6 @@ async function renderUpcomingEvent() {
 
 // Handle window resize
 window.addEventListener('resize', Utils.debounce(() => {
+    applyHeroSlidePositions();
     optimizePerformance();
 }, 250));

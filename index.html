@@ -6,67 +6,35 @@
     <title>Srotar Ashor - শ্রোতার আসর</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- External CSS -->
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/homepage.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-    
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-content">
-            <div class="logo bengali-text">শ্রোতার আসর</div>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="events.html" class="nav-link">Events</a></li>
-                <li><a href="albums.html" class="nav-link">Media</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+    <div id="site-nav"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <!-- Image Carousel Background -->
         <div class="image-carousel">
             <div class="carousel-slide active"></div>
             <div class="carousel-slide"></div>
             <div class="carousel-slide"></div>
             <div class="carousel-slide"></div>
         </div>
-        
-        <!-- Aurora Background -->
         <div class="aurora-bg"></div>
-        
-        <!-- Morphing Background -->
         <div class="morph-bg"></div>
-        
-        <!-- Floating Orbs -->
         <div class="floating-orb orb-1"></div>
         <div class="floating-orb orb-2"></div>
         <div class="floating-orb orb-3"></div>
-        
         <div class="hero-content">
             <h1 class="hero-title bengali-text fade-in">শ্রোতার আসর</h1>
             <p class="hero-subtitle fade-in">Where Rivers of Music Flow</p>
             <p class="hero-description fade-in">
-                Immerse yourself in the rich tapestry of Bangla music, where every note carries 
+                Immerse yourself in the rich tapestry of Bangla music, where every note carries
                 the essence of our cultural heritage and every song tells a story of our roots.
             </p>
             <div class="hero-buttons fade-in">
                 <button class="btn-advanced magnetic" onclick="window.location.href='events.html'">
                     Explore Events
-                </button>
-                <button class="btn-advanced magnetic" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);" onclick="window.location.href='albums.html'">
-                    View Media
                 </button>
             </div>
         </div>
@@ -75,9 +43,7 @@
     <!-- Upcoming Event Section -->
     <section class="content-section" id="upcoming" style="padding-top: 2rem; padding-bottom: 2rem;">
         <div class="events-container" style="max-width: 1100px; margin: 0 auto;">
-            <div id="upcomingContainer" class="fade-in">
-                <!-- Upcoming event card will be injected by JS. Hidden if no event. -->
-            </div>
+            <div id="upcomingContainer" class="fade-in"></div>
         </div>
     </section>
 
@@ -85,51 +51,40 @@
     <section class="content-section">
         <h2 class="section-title">Our Musical Journey</h2>
         <p class="section-description">
-            For over a decade, we have been preserving and promoting Bengali folk music, 
+            For over a decade, we have been preserving and promoting Bengali folk music,
             creating a bridge between tradition and contemporary expression.
         </p>
-        
         <div class="cards-grid">
             <div class="feature-card fade-in">
                 <span class="feature-icon">🎵</span>
                 <h3 class="feature-title">Traditional Music</h3>
                 <p class="feature-description">
-                    Authentic Bengali folk songs passed down through generations, 
+                    Authentic Bengali folk songs passed down through generations,
                     preserving the essence of our cultural heritage.
                 </p>
             </div>
-            
             <div class="feature-card fade-in">
                 <span class="feature-icon">🌊</span>
                 <h3 class="feature-title">Cultural Flow</h3>
                 <p class="feature-description">
-                    Like rivers flowing through time, our music carries the stories 
+                    Like rivers flowing through time, our music carries the stories
                     and emotions of Bengali culture to new generations.
                 </p>
             </div>
-            
             <div class="feature-card fade-in">
                 <span class="feature-icon">🤝</span>
                 <h3 class="feature-title">Community</h3>
                 <p class="feature-description">
-                    Building bridges through music, bringing together people from 
+                    Building bridges through music, bringing together people from
                     all walks of life in celebration of our shared heritage.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>
-            Website designed and developed by 
-            <a href="https://nuovix.com/" target="_blank" rel="noopener noreferrer">Nuovix</a>
-        </p>
-    </footer>
+    <div id="site-footer"></div>
 
-    <!-- External JavaScript -->
     <script src="js/common.js"></script>
-    <!-- Optional content overrides (JS-based). Place before homepage.js -->
     <script src="js/content-overrides.js"></script>
     <script src="js/homepage.js"></script>
 </body>

@@ -6,34 +6,13 @@
     <title>Photo Albums - Srotar Ashor</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- External CSS -->
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/albums.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-content">
-            <div class="logo bengali-text">শ্রোতার আসর</div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="events.html" class="nav-link">Events</a></li>
-                <li><a href="albums.html" class="nav-link active">Media</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+    <div id="site-nav"></div>
 
     <main style="padding-top: 5rem;">
-        <!-- Header -->
         <section class="text-center py-16 px-6">
             <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent fade-in">
                 Photo Albums
@@ -44,15 +23,11 @@
             </p>
         </section>
 
-        <!-- Year Navigation -->
         <section class="year-nav" id="yearNav">
             <button class="year-btn active" data-year="all">All Years</button>
         </section>
 
-        <!-- Albums Grid -->
-        <section class="album-grid" id="albumsGrid">
-            <!-- Albums will be dynamically generated -->
-        </section>
+        <section class="album-grid" id="albumsGrid"></section>
     </main>
 
     <!-- Photo Gallery Modal -->
@@ -63,9 +38,7 @@
             <p class="gallery-subtitle bengali-text" id="gallerySubtitle">ছবির অ্যালবাম</p>
         </div>
         <div class="gallery-content">
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- Gallery items will be dynamically generated -->
-            </div>
+            <div class="gallery-grid" id="galleryGrid"></div>
         </div>
     </div>
 
@@ -77,15 +50,8 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>
-            Website designed and developed by 
-            <a href="https://nuovix.com/" target="_blank" rel="noopener noreferrer">Nuovix</a>
-        </p>
-    </footer>
+    <div id="site-footer"></div>
 
-    <!-- External JavaScript -->
     <script src="js/common.js"></script>
     <script src="js/albums.js"></script>
 </body>

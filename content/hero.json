@@ -1,8 +1,8 @@
 {
   "slides": [
-    { "src": "images/photo1.jpg", "alt": "Performance 1" },
-    { "src": "images/photo2.jpg", "alt": "Performance 2" },
-    { "src": "images/photo1.jpg", "alt": "Performance 3" },
-    { "src": "images/photo2.jpg", "alt": "Performance 4" }
+    { "src": "assets/slides/photo1.jpg", "alt": "Performance 1", "position": "50% 52%", "positionMobile": "48% 56%" },
+    { "src": "assets/slides/photo2.jpg", "alt": "Performance 2", "position": "50% 50%", "positionMobile": "50% 54%" },
+    { "src": "assets/slides/photo1.jpg", "alt": "Performance 3", "position": "50% 52%", "positionMobile": "48% 56%" },
+    { "src": "assets/slides/photo2.jpg", "alt": "Performance 4", "position": "50% 50%", "positionMobile": "50% 54%" }
   ]
 }

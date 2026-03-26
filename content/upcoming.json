@@ -1,14 +1,14 @@
 {
   "events": [
     {
-      "title": "Gane Dui Prane — Two Decades in Song and Soul",
-      "bengali": "গানে প্রানে — দুই দশক",
-      "start": "2025-11-09T18:00:00+11:00",
-      "end": "2025-11-09T21:00:00+11:00",
-      "location": "The Edge, Fed Square, corner of Swanston St & Flinders St, Melbourne VIC",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Edge%20Fed%20Square%20Melbourne",
-      "image": "events/20251109-gane-dui-prane.png",
-      "description": "Srotar Ashor celebrates two decades in song and soul with a special anniversary concert at Fed Square."
+      "title": "Chondrokarigor",
+      "bengali": "চন্দ্রকারিগর",
+      "start": "2026-05-16T17:00:00+10:00",
+      "end": "2026-05-16T19:00:00+10:00",
+      "location": "Chandler Community Center",
+      "mapsUrl": "https://maps.app.goo.gl/MzGQDyG2mtNybnhn8",
+      "image": "events/chondrokarigon_2026_05_16.jpeg",
+      "description": "Srotar Ashor presents ‘Chandrakarigar,’ alongside many familiar faces, beloved songs, and well-known stories—the very stories, songs, and characters made immortal by the moon-smith, Humayun Ahmed."
     }
   ]
 }

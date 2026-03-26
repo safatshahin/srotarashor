@@ -4,7 +4,7 @@
 .about-hero {
     background: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
-        url('../images/folk2023.jpg') center/cover no-repeat;
+        url('../events/folk2023.jpg') center/cover no-repeat;
     min-height: 60vh;
     display: flex;
     align-items: center;
@@ -185,7 +185,7 @@
     height: 20px;
     background: var(--primary);
     border-radius: 50%;
-    border: 4px solid var(--bg-primary);
+    border: 4px solid #0a0a0a;
     box-shadow: 0 0 0 2px var(--primary);
 }
 
@@ -228,33 +228,7 @@
     height: 20px;
 }
 
-/* About Footer */
-.about-footer {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(26, 26, 26, 0.9));
-    padding: 4rem 1.5rem;
-    border-top: 1px solid rgba(247, 148, 28, 0.2);
-    text-align: center;
-    backdrop-filter: blur(20px);
-}
-
-.about-footer-title {
-    font-size: 2rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-.about-footer-description {
-    color: #9ca3af;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.about-footer-copyright {
-    color: #6b7280;
-    font-size: 0.875rem;
-}
+/* About Footer - styles moved to common.css */
 
 /* Responsive Design */
 @media (max-width: 768px) {
