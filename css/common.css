@@ -103,6 +103,16 @@ body {
     width: 100%;
 }
 
+.nav-link-members {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.nav-icon {
+    flex-shrink: 0;
+}
+
 /* Mobile Menu */
 .mobile-menu-btn {
     display: none;
